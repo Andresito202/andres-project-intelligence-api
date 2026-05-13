@@ -1,0 +1,15 @@
+name = "andres-project-intelligence-api"
+main = "src/index.ts"
+compatibility_date = "2026-05-12"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+APP_ENV = "production"
+APP_VERSION = "1.0.0"
+ALLOWED_ORIGINS = "https://www.andrescamacho.dev,http://localhost:5173"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio_api"
+database_id = "replace-with-cloudflare-d1-database-id"
+migrations_dir = "src/db/migrations"
