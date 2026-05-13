@@ -4,6 +4,44 @@ Professional backend for `andrescamacho.dev`. It exposes portfolio projects, ski
 
 The API is built to show real backend engineering in the portfolio: clean architecture, validation, database migrations, OpenAPI documentation, admin security, and CI checks.
 
+## Live API
+
+```txt
+https://api.andrescamacho.dev
+```
+
+Interactive documentation:
+
+```txt
+https://api.andrescamacho.dev/v1/docs
+```
+
+OpenAPI specification:
+
+```txt
+https://api.andrescamacho.dev/v1/openapi.json
+```
+
+## What This API Provides
+
+- A professional backend layer for the portfolio instead of hardcoded frontend-only project data.
+- Public endpoints for projects, skills, case studies, and repository visibility.
+- Safe handling for private or unpublished repositories by returning `repoUrl: null` instead of links that become 404 pages.
+- A contact endpoint prepared for structured message capture, validation, and abuse control.
+- Admin-only endpoints protected by `x-api-key` for future internal content operations.
+- OpenAPI and Swagger documentation so the API can be reviewed, tested, and integrated like a production service.
+
+## Professional Value
+
+This project demonstrates how a portfolio can move beyond a static website and become a real product surface:
+
+- Content is served from a structured database.
+- Public data and private operational data are separated.
+- Inputs are validated before reaching the business layer.
+- Responses follow a consistent success/error contract.
+- Documentation is generated and exposed for external review.
+- Deployment is serverless, low-cost, and easy to scale.
+
 ## Stack
 
 - Cloudflare Workers
@@ -39,6 +77,15 @@ src/
     health/
 ```
 
+## Key Architecture Decisions
+
+- `src/app.ts` wires routing, middleware, documentation, and module composition.
+- `src/modules/*` keeps each domain isolated: projects, skills, case studies, repo status, contact, health, and admin operations.
+- `src/db/schema.ts` defines the relational model used by Drizzle ORM.
+- `src/db/migrations` keeps the database reproducible across local and remote environments.
+- `src/docs/openapi.ts` publishes a documented contract for consumers.
+- `src/middleware` centralizes CORS, request IDs, error handling, admin authentication, and rate limiting.
+
 ## Public Endpoints
 
 Production base URL:
@@ -60,6 +107,15 @@ POST /v1/contact
 GET  /v1/openapi.json
 GET  /v1/docs
 ```
+
+## Security and Data Protection
+
+- Admin routes require the `x-api-key` header.
+- Private project repositories should remain `repo_url = null`.
+- CORS is configured for controlled frontend consumption.
+- Contact payloads are validated with Zod before persistence.
+- Rate limiting protects sensitive flows from repeated automated submissions.
+- Secrets are stored through Cloudflare Wrangler, not committed to the repository.
 
 ## Admin Endpoints
 
@@ -167,6 +223,21 @@ Keep `repo_url = null` for private or unpublished repositories. Public visitors 
 
 See [docs/portfolio-integration.md](docs/portfolio-integration.md) and [examples/portfolio-client.ts](examples/portfolio-client.ts) for a typed frontend client.
 
+## Example Portfolio Client Flow
+
+```ts
+const response = await fetch('https://api.andrescamacho.dev/v1/projects');
+const payload = await response.json();
+
+if (!payload.success) {
+  throw new Error(payload.error.message);
+}
+
+const projects = payload.data.items;
+```
+
+The frontend should treat `repoUrl: null` as a deliberate visibility rule, not as a missing field.
+
 ## Quality
 
 ```bash
@@ -175,3 +246,12 @@ npm run typecheck
 npm run test
 npm run check
 ```
+
+## Status
+
+- Production API: active
+- Custom domain: active at `api.andrescamacho.dev`
+- Documentation: active at `/v1/docs`
+- Project catalog: 9 seeded projects, including this API as a backend portfolio project
+- Database: Cloudflare D1
+- Deployment target: Cloudflare Workers, exposed through a Vercel domain proxy
