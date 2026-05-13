@@ -116,7 +116,7 @@ GET  /v1/docs
 - Contact payloads are validated with Zod before persistence.
 - Contact messages require server-side Cloudflare Turnstile verification before persistence.
 - The contact endpoint rejects unapproved production origins, honeypot submissions, and repeated automated submissions.
-- Email delivery is handled server-side through an optional `WEB3FORMS_ACCESS_KEY` secret, so the frontend never exposes a form delivery key.
+- Email delivery is handled server-side through an optional Brevo API secret, so the frontend never exposes a delivery credential.
 - Secrets are stored through Cloudflare Wrangler, not committed to the repository.
 
 ## Admin Endpoints
@@ -179,11 +179,13 @@ Production Turnstile setup:
 wrangler secret put TURNSTILE_SECRET_KEY
 ```
 
-Optional production email delivery:
+Optional production email delivery with Brevo:
 
 ```bash
-wrangler secret put WEB3FORMS_ACCESS_KEY
+wrangler secret put BREVO_API_KEY
 ```
+
+Before enabling delivery, register and verify the sender email in Brevo. The default recipient and sender values are configured in `wrangler.toml` through `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, and `CONTACT_FROM_NAME`.
 
 Use a real Cloudflare Turnstile secret in production. Local development can bypass Turnstile only when `APP_ENV` is not `production` and `TURNSTILE_DISABLED=true`.
 

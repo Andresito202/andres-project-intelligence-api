@@ -4,13 +4,16 @@ export type Env = {
   ALLOWED_ORIGINS?: string;
   APP_ENV?: string;
   APP_VERSION?: string;
+  BREVO_API_KEY?: string;
+  CONTACT_FROM_EMAIL?: string;
+  CONTACT_FROM_NAME?: string;
   CONTACT_NOTIFICATION_REQUIRED?: string;
   CONTACT_NOTIFICATION_SUBJECT?: string;
+  CONTACT_TO_EMAIL?: string;
   TURNSTILE_DISABLED?: string;
   TURNSTILE_EXPECTED_ACTION?: string;
   TURNSTILE_EXPECTED_HOSTNAME?: string;
   TURNSTILE_SECRET_KEY?: string;
-  WEB3FORMS_ACCESS_KEY?: string;
 };
 
 export type AppVariables = {

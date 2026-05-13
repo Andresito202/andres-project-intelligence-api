@@ -50,7 +50,7 @@ contactRoutes.post(
     const message = await createContactMessage(db, input);
     const notification = await notifyContactMessage(c.env, input, message.id);
 
-    if (c.env.CONTACT_NOTIFICATION_REQUIRED === "true" && notification.status === "failed") {
+    if (c.env.CONTACT_NOTIFICATION_REQUIRED === "true" && notification.status !== "sent") {
       return apiError(c, 502, "CONTACT_NOTIFICATION_FAILED", "Message was stored but email delivery failed", notification);
     }
 
