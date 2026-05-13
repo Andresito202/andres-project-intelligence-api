@@ -9,6 +9,8 @@ preview_urls = true
 APP_ENV = "production"
 APP_VERSION = "1.0.0"
 ALLOWED_ORIGINS = "https://www.andrescamacho.dev,http://localhost:5173"
+TURNSTILE_EXPECTED_ACTION = "portfolio_contact"
+TURNSTILE_EXPECTED_HOSTNAME = "www.andrescamacho.dev"
 
 [[d1_databases]]
 binding = "DB"

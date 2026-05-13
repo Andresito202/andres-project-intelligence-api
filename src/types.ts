@@ -4,6 +4,10 @@ export type Env = {
   ALLOWED_ORIGINS?: string;
   APP_ENV?: string;
   APP_VERSION?: string;
+  TURNSTILE_DISABLED?: string;
+  TURNSTILE_EXPECTED_ACTION?: string;
+  TURNSTILE_EXPECTED_HOSTNAME?: string;
+  TURNSTILE_SECRET_KEY?: string;
 };
 
 export type AppVariables = {

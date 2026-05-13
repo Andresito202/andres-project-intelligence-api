@@ -94,7 +94,7 @@ INSERT INTO projects (
   'andres-project-intelligence-api',
   'Andres Project Intelligence API',
   'Professional serverless API for portfolio projects, skills, case studies, repository visibility, and contact messages under api.andrescamacho.dev.',
-  'Andres Project Intelligence API turns the portfolio into a real full-stack system. It centralizes structured project data, public and private repository status, skills, case studies, and contact workflows through versioned endpoints, OpenAPI documentation, and a D1 database with migrations and reproducible seed data.',
+  'Andres Project Intelligence API turns the portfolio into a real full-stack system. It centralizes structured project data, public and private repository status, skills, case studies, and protected contact workflows through versioned endpoints, OpenAPI documentation, server-side Turnstile verification, and a D1 database with migrations and reproducible seed data.',
   'Removes the dependency on hardcoded portfolio data and manually maintained GitHub links that can cause 404 errors.',
   'Backend / API Architect',
   'Portfolio content API and serverless backend',
@@ -106,7 +106,7 @@ INSERT INTO projects (
   'public',
   'api',
   '["Cloudflare Workers","Hono","TypeScript","Cloudflare D1","Drizzle ORM","Zod","OpenAPI","Swagger UI","Vitest","GitHub Actions","Vercel Proxy"]',
-  '["Versioned API","Public project endpoints","Repository visibility rules","Contact endpoint","Protected admin routes","D1 migrations","OpenAPI documentation","CI checks","Custom API domain"]',
+  '["Versioned API","Public project endpoints","Repository visibility rules","Contact endpoint with Turnstile verification","Protected admin routes","D1 migrations","OpenAPI documentation","Origin checks and rate limiting","CI checks","Custom API domain"]',
   '["/projects/andres-project-intelligence-api/api-cover.svg"]'
 ),
 (

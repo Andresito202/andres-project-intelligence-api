@@ -114,7 +114,8 @@ GET  /v1/docs
 - Private project repositories should remain `repo_url = null`.
 - CORS is configured for controlled frontend consumption.
 - Contact payloads are validated with Zod before persistence.
-- Rate limiting protects sensitive flows from repeated automated submissions.
+- Contact messages require server-side Cloudflare Turnstile verification before persistence.
+- The contact endpoint rejects unapproved production origins, honeypot submissions, and repeated automated submissions.
 - Secrets are stored through Cloudflare Wrangler, not committed to the repository.
 
 ## Admin Endpoints
@@ -170,6 +171,14 @@ npm run db:migrate:local
 npm run db:seed:local
 npm run dev
 ```
+
+Production Turnstile setup:
+
+```bash
+wrangler secret put TURNSTILE_SECRET_KEY
+```
+
+Use a real Cloudflare Turnstile secret in production. Local development can bypass Turnstile only when `APP_ENV` is not `production` and `TURNSTILE_DISABLED=true`.
 
 Then open:
 

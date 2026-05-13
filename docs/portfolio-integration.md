@@ -62,6 +62,7 @@ export async function sendContactMessage(input: {
   email: string;
   company?: string;
   message: string;
+  turnstileToken: string;
 }) {
   const response = await fetch(`${API_URL}/v1/contact`, {
     method: "POST",

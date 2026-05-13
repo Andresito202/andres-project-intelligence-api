@@ -5,7 +5,9 @@ export const createContactMessageSchema = z.object({
   email: z.string().email().max(180),
   company: z.string().max(160).optional().nullable(),
   message: z.string().min(20).max(3000),
-  source: z.string().min(2).max(80).default("portfolio")
+  source: z.string().min(2).max(80).default("portfolio"),
+  botcheck: z.string().max(200).optional().default(""),
+  turnstileToken: z.string().min(10).max(2048)
 });
 
 export const updateContactStatusSchema = z.object({
