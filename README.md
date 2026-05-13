@@ -41,6 +41,12 @@ src/
 
 ## Public Endpoints
 
+Production base URL:
+
+```txt
+https://andres-project-intelligence-api.wilsonandrescamachoculma.workers.dev
+```
+
 ```txt
 GET  /v1/health
 GET  /v1/projects
