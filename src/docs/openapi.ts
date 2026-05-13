@@ -123,6 +123,7 @@ export const openApiDocument = {
           "201": { description: "Message received" },
           "400": { description: "Invalid message" },
           "403": { description: "Origin or captcha verification failed" },
+          "502": { description: "Message stored but email notification failed" },
           "429": { description: "Rate limited" }
         }
       }

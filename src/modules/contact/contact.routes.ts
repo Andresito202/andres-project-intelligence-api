@@ -6,6 +6,7 @@ import { createDb } from "../../db/client";
 import { apiError, apiSuccess } from "../../lib/response";
 import { rateLimit } from "../../middleware/rate-limit";
 import type { AppBindings } from "../../types";
+import { notifyContactMessage } from "./contact-notifier";
 import { createContactMessage } from "./contact.repository";
 import { createContactMessageSchema } from "./contact.schema";
 import { verifyTurnstileToken } from "./turnstile";
@@ -47,13 +48,19 @@ contactRoutes.post(
 
     const db = createDb(c.env);
     const message = await createContactMessage(db, input);
+    const notification = await notifyContactMessage(c.env, input, message.id);
+
+    if (c.env.CONTACT_NOTIFICATION_REQUIRED === "true" && notification.status === "failed") {
+      return apiError(c, 502, "CONTACT_NOTIFICATION_FAILED", "Message was stored but email delivery failed", notification);
+    }
 
     return apiSuccess(
       c,
       {
         id: message.id,
         status: message.status,
-        receivedAt: message.createdAt
+        receivedAt: message.createdAt,
+        notification
       },
       201
     );

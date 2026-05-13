@@ -116,6 +116,7 @@ GET  /v1/docs
 - Contact payloads are validated with Zod before persistence.
 - Contact messages require server-side Cloudflare Turnstile verification before persistence.
 - The contact endpoint rejects unapproved production origins, honeypot submissions, and repeated automated submissions.
+- Email delivery is handled server-side through an optional `WEB3FORMS_ACCESS_KEY` secret, so the frontend never exposes a form delivery key.
 - Secrets are stored through Cloudflare Wrangler, not committed to the repository.
 
 ## Admin Endpoints
@@ -176,6 +177,12 @@ Production Turnstile setup:
 
 ```bash
 wrangler secret put TURNSTILE_SECRET_KEY
+```
+
+Optional production email delivery:
+
+```bash
+wrangler secret put WEB3FORMS_ACCESS_KEY
 ```
 
 Use a real Cloudflare Turnstile secret in production. Local development can bypass Turnstile only when `APP_ENV` is not `production` and `TURNSTILE_DISABLED=true`.

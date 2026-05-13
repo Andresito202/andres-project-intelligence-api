@@ -93,9 +93,9 @@ INSERT INTO projects (
   'project_project_intelligence_api',
   'andres-project-intelligence-api',
   'Andres Project Intelligence API',
-  'Professional serverless API for portfolio projects, skills, case studies, repository visibility, and contact messages under api.andrescamacho.dev.',
-  'Andres Project Intelligence API turns the portfolio into a real full-stack system. It centralizes structured project data, public and private repository status, skills, case studies, and protected contact workflows through versioned endpoints, OpenAPI documentation, server-side Turnstile verification, and a D1 database with migrations and reproducible seed data.',
-  'Removes the dependency on hardcoded portfolio data and manually maintained GitHub links that can cause 404 errors.',
+  'Serverless API that turns the portfolio into a professional platform with structured data, safe repository visibility, public documentation, and protected contact intake under api.andrescamacho.dev.',
+  'This API shows that the portfolio is not just a static showcase; it is backed by a real service layer for content, credibility, and contact operations. For clients, it means organized information, protected forms, and a backend foundation ready for dashboards or internal workflows. For recruiters, it demonstrates serverless architecture, versioned contracts, applied security, and verifiable technical documentation.',
+  'Solves three practical needs: keeping projects and case studies in a reliable source of truth, preventing broken links or private repositories from being exposed, and receiving qualified contact requests with anti-spam validation without leaking secrets to the browser.',
   'Backend / API Architect',
   'Portfolio content API and serverless backend',
   'production',
@@ -106,7 +106,7 @@ INSERT INTO projects (
   'public',
   'api',
   '["Cloudflare Workers","Hono","TypeScript","Cloudflare D1","Drizzle ORM","Zod","OpenAPI","Swagger UI","Vitest","GitHub Actions","Vercel Proxy"]',
-  '["Versioned API","Public project endpoints","Repository visibility rules","Contact endpoint with Turnstile verification","Protected admin routes","D1 migrations","OpenAPI documentation","Origin checks and rate limiting","CI checks","Custom API domain"]',
+  '["Structured content source","Repository visibility rules","Protected contact intake","Server-side Turnstile verification","Backend notification path","Protected admin routes","D1 migrations","OpenAPI documentation","Origin checks and rate limiting","CI checks","Custom API domain"]',
   '["/projects/andres-project-intelligence-api/api-cover.svg"]'
 ),
 (
@@ -226,9 +226,9 @@ INSERT INTO case_studies (id, project_id, slug, problem, solution, architecture,
   'case_portfolio_api',
   'project_project_intelligence_api',
   'portfolio-api-content-source',
-  'The portfolio needed a reliable source of truth for projects, repo visibility, and contact messages without hardcoding every future update.',
-  'This API separates public portfolio data from private admin operations and exposes stable versioned endpoints.',
+  'The portfolio needed a reliable source of truth for project evidence, repository visibility, and contact intake without hardcoding every future update.',
+  'This API separates public credibility data from private operations, protects contact workflows, and exposes stable versioned endpoints.',
   'Cloudflare Workers, Hono, D1, Drizzle, Zod validation, OpenAPI documentation, CORS restrictions, API-key admin routes, and CI checks.',
-  'The portfolio can evolve from a static site into a full-stack professional system with a free serverless backend.',
-  'A strong portfolio project should demonstrate architecture, validation, deployment, documentation, and security decisions.'
+  'The portfolio can operate as a professional product surface instead of a static page, while keeping cost and maintenance low through a serverless backend.',
+  'A strong portfolio project should communicate business value, engineering architecture, validation, deployment, documentation, and security decisions.'
 );
