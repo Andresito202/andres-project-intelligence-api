@@ -44,7 +44,7 @@ src/
 Production base URL:
 
 ```txt
-https://andres-project-intelligence-api.wilsonandrescamachoculma.workers.dev
+https://api.andrescamacho.dev
 ```
 
 ```txt

@@ -16,12 +16,6 @@ For local development:
 VITE_PORTFOLIO_API_URL=http://localhost:8787
 ```
 
-Current production Worker URL:
-
-```txt
-VITE_PORTFOLIO_API_URL=https://andres-project-intelligence-api.wilsonandrescamachoculma.workers.dev
-```
-
 ## Project Fetcher
 
 ```ts

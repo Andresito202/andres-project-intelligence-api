@@ -1,6 +1,4 @@
-const API_URL =
-  import.meta.env.VITE_PORTFOLIO_API_URL ??
-  "https://andres-project-intelligence-api.wilsonandrescamachoculma.workers.dev";
+const API_URL = import.meta.env.VITE_PORTFOLIO_API_URL ?? "https://api.andrescamacho.dev";
 
 type ApiResponse<T> =
   | {
